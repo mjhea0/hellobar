@@ -25,5 +25,5 @@ let helloBar = `
 `;
 
 $(() => {
-	$('body').append(helloBar);
+  $('body').append(helloBar);
 });
