@@ -14,4 +14,4 @@ Just a simple notification bar, much like Hello Bar.
 
 ## Example
 
-![](./example/example.png)
+![](./example/example2.png)
