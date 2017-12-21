@@ -1,3 +1,6 @@
+/*
+Remove if you want the bar displayed on mobile devices
+ */
 @media only screen and (max-width: 700px) {
   #hellobar-bar { display: none !important; }
 }
@@ -7,6 +10,10 @@ body{
   padding: 0;
   width: 100%;
 }
+
+/*
+Hello Bar
+ */
 #hellobar-bar {
   font-family: "Open Sans", sans-serif;
   width: 100%;
@@ -20,8 +27,7 @@ body{
   color: white;
   position: fixed;
   top: 0;
-  background-color: #0D70C2;
-  box-shadow: 0 1px 3px 2px rgba(0,0,0,0.15);
+  background-color: #5c5757;
 }
 #hellobar-bar.regular {
   height: 30px;
@@ -39,6 +45,10 @@ body{
   margin-top: 0;
   margin-bottom: 0;
 }
+
+/*
+Text
+ */
 .hb-text-wrapper {
   margin-right: .67em;
   display: inline-block;
@@ -49,13 +59,17 @@ body{
   display: inline-block;
   vertical-align: middle;
 }
+
+/*
+Button
+ */
 #hellobar-bar .hb-cta {
   display: inline-block;
   vertical-align: middle;
   margin: 5px 0;
-  color: #ffffff;
-  background-color: black;
-  border-color: black;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #fff;
 }
 .hb-cta-button {
   opacity: 1;
@@ -77,14 +91,23 @@ body{
   border-radius: inherit;
   padding: 5px 15px;
 }
+
+.hb-cta-button:active, .hb-cta-button:hover {
+    color: #fff !important;
+    background-color: #ee6e73 !important;
+}
+
+/*
+Close
+ */
 .hb-close-wrapper {
   display: table-cell;
   width: 1.6em;
 }
 .hb-close-wrapper .icon-close {
-  font-size: 18px;
+  font-size: 15px;
   top: 20px;
-  right: 25px;
+  right: 30px;
   width: 15px;
   height: 15px;
   opacity: .7;
@@ -95,4 +118,13 @@ body{
   line-height: 100%;
   z-index: 1000;
   text-decoration: none;
+}
+.icon-close:hover {
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.3);
+  color: #0582b6;
+}
+.icon-close:active {
+  color: #0582b6;
 }

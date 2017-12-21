@@ -2,6 +2,7 @@ let content = {
   text: 'Want to learn Docker, Flask, and React?',
   buttonText: 'Click Here',
   buttonLink: 'https://testdriven.io',
+  cookieExpiration: 30,
 };
 
 let helloBar = `
@@ -19,11 +20,19 @@ let helloBar = `
     </a>
   </div>
   <div class="hb-close-wrapper">
-    <a href="javascript:void(0);" class="icon-close" onClick="$('#hellobar-bar').fadeOut()">&#10006;</a>
+    <a href="javascript:void(0);" class="icon-close">x</a>
   </div>
 </div>
 `;
 
 $(() => {
-	$('body').append(helloBar);
+  if (!Cookies.get('cookieNotification')) {
+    $('body').append(helloBar);
+  }
+});
+
+$('body').on('click', '.icon-close', () => {
+  $('#hellobar-bar').delay(100).fadeOut('slow');
+  Cookies.set('cookieNotification', 'true', {
+    expires: content.cookieExpiration });
 });
