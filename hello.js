@@ -25,14 +25,31 @@ let helloBar = `
 </div>
 `;
 
-$(() => {
+document.addEventListener('DOMContentLoaded', (event) => {
   if (!Cookies.get('cookieNotification')) {
-    $('body').append(helloBar);
+    let element = document.createRange().createContextualFragment(helloBar);
+    document.body.appendChild(element);
   }
 });
 
-$('body').on('click', '.icon-close', () => {
-  $('#hellobar-bar').delay(100).fadeOut('slow');
-  Cookies.set('cookieNotification', 'true', {
-    expires: content.cookieExpiration });
+window.addEventListener('click', (event) => {
+  if(event.target && event.target.matches('a.icon-close')) {
+    const helloBarElement = document.getElementById('hellobar-bar');
+    fadeOutEffect(helloBarElement);
+    Cookies.set('cookieNotification', 'true', {
+      expires: content.cookieExpiration });
+  }
 });
+
+function fadeOutEffect(element) {
+  let fadeEffect = setInterval(() => {
+    if (!element.style.opacity) {
+      element.style.opacity = 1;
+    }
+    if (element.style.opacity < 0.1) {
+      clearInterval(fadeEffect);
+    } else {
+      element.style.opacity -= 0.1;
+    }
+  }, 40);
+}
