@@ -1,9 +1,17 @@
+/*
+config
+ */
+
 let content = {
   text: 'Want to learn Docker, Flask, and React?',
   buttonText: 'Click Here',
   buttonLink: 'https://testdriven.io',
   cookieExpiration: 30,
 };
+
+/*
+hellobar html string
+ */
 
 let helloBar = `
 <div id="hellobar-bar" class="regular closable">
@@ -25,8 +33,12 @@ let helloBar = `
 </div>
 `;
 
+/*
+event handlers
+ */
+
 document.addEventListener('DOMContentLoaded', (event) => {
-  if (!Cookies.get('cookieNotification')) {
+  if (!getCookie('cookieNotification')) {
     let element = document.createRange().createContextualFragment(helloBar);
     document.body.appendChild(element);
   }
@@ -36,10 +48,14 @@ window.addEventListener('click', (event) => {
   if(event.target && event.target.matches('a.icon-close')) {
     const helloBarElement = document.getElementById('hellobar-bar');
     fadeOutEffect(helloBarElement);
-    Cookies.set('cookieNotification', 'true', {
-      expires: content.cookieExpiration });
+    setCookie('cookieNotification', 'true', content.cookieExpiration);
   }
 });
+
+
+/*
+help functions
+ */
 
 function fadeOutEffect(element) {
   let fadeEffect = setInterval(() => {
@@ -52,4 +68,31 @@ function fadeOutEffect(element) {
       element.style.opacity -= 0.1;
     }
   }, 40);
+}
+
+function getCookieValues(cookie) {
+  return cookie.split('=')[1].trim();
+}
+
+function getCookieNames(cookie) {
+  return cookie.split('=')[0].trim();
+}
+
+function getCookie(name) {
+  if (!document.cookie) return false;
+  const cookies = document.cookie.split(';');
+  const cookieValue = cookies.map(getCookieValues)[
+    cookies.map(getCookieNames).indexOf(name)];
+  return (cookieValue) ? true : false;
+}
+
+function daysToMilliseconds(days) {
+  return 1000 * 60 * 60 * 24 * days;
+}
+
+function setCookie(key, value, expiration) {
+  const expirationdate = new Date(
+    new Date().getTime() + daysToMilliseconds(expiration)
+  );
+  document.cookie=`${key}=${value};expires=${expirationdate.toGMTString()}`;
 }
