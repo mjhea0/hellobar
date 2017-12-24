@@ -94,5 +94,5 @@ function setCookie(key, value, expiration) {
   const expirationdate = new Date(
     new Date().getTime() + daysToMilliseconds(expiration)
   );
-  document.cookie=`${key}=${value};expires=${expirationdate.toGMTString()}`;
+  document.cookie=`${key}=${value};expires=${expirationdate.toGMTString()};domain=${window.location.hostname};path=/`;
 }
