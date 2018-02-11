@@ -1,6 +1,6 @@
 # Hello Bar
 
-Just a simple notification bar, much like Hello Bar.
+Just a simple notification bar, similar to [Hello Bar](https://www.hellobar.com/).
 
 ## Getting Started
 
