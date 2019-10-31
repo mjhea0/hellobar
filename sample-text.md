@@ -11,3 +11,10 @@
   buttonText: 'Available Now'
 }
 ```
+
+```javascript
+{
+  text: 'Check out the <em>Microservices with Docker, Flask, and React</em> course!'
+  buttonText: 'Download Now'
+}
+```
